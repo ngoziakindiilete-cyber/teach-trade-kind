@@ -317,5 +317,3 @@ const BrowseSkills = () => {
 };
 
 export default BrowseSkills;
-
-export default BrowseSkills;
