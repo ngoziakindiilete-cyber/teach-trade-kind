@@ -1,11 +1,16 @@
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { MessageSquare, Star } from "lucide-react";
 import { useScrollAnimate, useStaggeredAnimate } from "@/hooks/use-scroll-animate";
+import { useToast } from "@/hooks/use-toast";
 
 const people = [
   {
-    name: "Maria Lopez",
+    name: "Ngozi Okafor",
     avatar: "👩‍🍳",
     teaches: ["Cooking", "Baking"],
     wants: ["Photography", "Graphic Design"],
@@ -13,7 +18,7 @@ const people = [
     exchanges: 12,
   },
   {
-    name: "James Chen",
+    name: "Emeka Eze",
     avatar: "📸",
     teaches: ["Photography", "Lightroom"],
     wants: ["Cooking", "Guitar"],
@@ -21,7 +26,7 @@ const people = [
     exchanges: 8,
   },
   {
-    name: "Aisha Patel",
+    name: "Amaka Adeyemi",
     avatar: "🎨",
     teaches: ["Painting", "Illustration"],
     wants: ["Web Development", "Yoga"],
@@ -29,7 +34,7 @@ const people = [
     exchanges: 15,
   },
   {
-    name: "David Kim",
+    name: "Femi Balogun",
     avatar: "💻",
     teaches: ["Web Development", "Python"],
     wants: ["Painting", "Piano"],
@@ -37,7 +42,7 @@ const people = [
     exchanges: 10,
   },
   {
-    name: "Sophie Brown",
+    name: "Chioma Nwachukwu",
     avatar: "🎸",
     teaches: ["Guitar", "Music Theory"],
     wants: ["Cooking", "Spanish"],
@@ -45,7 +50,7 @@ const people = [
     exchanges: 6,
   },
   {
-    name: "Omar Hassan",
+    name: "Uche Okorie",
     avatar: "🧘",
     teaches: ["Yoga", "Meditation"],
     wants: ["Photography", "Guitar"],
@@ -57,6 +62,29 @@ const people = [
 const SkillCards = () => {
   const sectionRef = useScrollAnimate<HTMLElement>();
   const gridRef = useStaggeredAnimate<HTMLDivElement>(110);
+  const { toast } = useToast();
+  const [dialog, setDialog] = useState<{ open: boolean; personName: string }>({ open: false, personName: "" });
+  const [offerSkill, setOfferSkill] = useState("");
+  const [offerError, setOfferError] = useState("");
+
+  const openDialog = (name: string) => {
+    setOfferSkill("");
+    setOfferError("");
+    setDialog({ open: true, personName: name });
+  };
+
+  const handleSend = () => {
+    if (!offerSkill.trim()) {
+      setOfferError("You must offer a skill in exchange to send this request.");
+      return;
+    }
+    setDialog({ open: false, personName: "" });
+    toast({
+      title: `Swap request sent to ${dialog.personName} successfully!`,
+      description: `You offered to teach: ${offerSkill}`,
+    });
+  };
+
   return (
     <section id="browse-skills" ref={sectionRef} className="py-20 scroll-mt-16">
       <div className="container mx-auto px-4">
@@ -114,13 +142,38 @@ const SkillCards = () => {
                 </div>
               </div>
 
-              <Button variant="outline" className="w-full rounded-full gap-2">
+              <Button variant="outline" className="w-full rounded-full gap-2" onClick={() => openDialog(person.name)}>
                 <MessageSquare className="w-4 h-4" /> Request Exchange
               </Button>
             </div>
           ))}
         </div>
       </div>
+
+      <Dialog open={dialog.open} onOpenChange={(open) => setDialog((d) => ({ ...d, open }))}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Exchange with {dialog.personName}</DialogTitle>
+          </DialogHeader>
+          <p className="text-sm text-muted-foreground">
+            SkillSwap is teach-and-learn — you can only gain a skill by offering one in return.
+          </p>
+          <div className="space-y-2 mt-2">
+            <Label htmlFor="offer-skill-home">What will you teach {dialog.personName}?</Label>
+            <Input
+              id="offer-skill-home"
+              placeholder="e.g. Photography, Guitar, Cooking..."
+              value={offerSkill}
+              onChange={(e) => { setOfferSkill(e.target.value); setOfferError(""); }}
+            />
+            {offerError && <p className="text-xs text-destructive">{offerError}</p>}
+          </div>
+          <DialogFooter className="mt-4">
+            <Button variant="outline" onClick={() => setDialog({ open: false, personName: "" })}>Cancel</Button>
+            <Button onClick={handleSend}>Send Request</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

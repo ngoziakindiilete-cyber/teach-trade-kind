@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { MessageSquare, Search, Star, Users, ArrowLeft, BookOpen } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { useStaggeredAnimate } from "@/hooks/use-scroll-animate";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 const CATEGORIES = [
   "All",
@@ -21,7 +24,7 @@ const CATEGORIES = [
 
 const people = [
   {
-    name: "Maria Lopez",
+    name: "Ngozi Okafor",
     avatar: "👩‍🍳",
     teaches: ["Cooking", "Baking"],
     wants: ["Photography", "Graphic Design"],
@@ -32,7 +35,7 @@ const people = [
     totalMatches: 12,
   },
   {
-    name: "James Chen",
+    name: "Emeka Eze",
     avatar: "📸",
     teaches: ["Photography", "Lightroom"],
     wants: ["Cooking", "Guitar"],
@@ -43,7 +46,7 @@ const people = [
     totalMatches: 8,
   },
   {
-    name: "Aisha Patel",
+    name: "Amaka Adeyemi",
     avatar: "🎨",
     teaches: ["Painting", "Illustration"],
     wants: ["Web Development", "Yoga"],
@@ -54,7 +57,7 @@ const people = [
     totalMatches: 15,
   },
   {
-    name: "David Kim",
+    name: "Femi Balogun",
     avatar: "💻",
     teaches: ["Web Development", "Python"],
     wants: ["Painting", "Piano"],
@@ -65,7 +68,7 @@ const people = [
     totalMatches: 10,
   },
   {
-    name: "Sophie Brown",
+    name: "Chioma Nwachukwu",
     avatar: "🎸",
     teaches: ["Guitar", "Music Theory"],
     wants: ["Cooking", "Spanish"],
@@ -76,7 +79,7 @@ const people = [
     totalMatches: 6,
   },
   {
-    name: "Omar Hassan",
+    name: "Uche Okorie",
     avatar: "🧘",
     teaches: ["Yoga", "Meditation"],
     wants: ["Photography", "Guitar"],
@@ -87,7 +90,7 @@ const people = [
     totalMatches: 9,
   },
   {
-    name: "Priya Nair",
+    name: "Adaeze Obi",
     avatar: "✍️",
     teaches: ["Creative Writing", "Copywriting"],
     wants: ["Photography", "Cooking"],
@@ -98,7 +101,7 @@ const people = [
     totalMatches: 7,
   },
   {
-    name: "Carlos Mendez",
+    name: "Tunde Adesanya",
     avatar: "🗣️",
     teaches: ["Spanish", "French"],
     wants: ["Programming", "Music Theory"],
@@ -109,7 +112,7 @@ const people = [
     totalMatches: 11,
   },
   {
-    name: "Yuki Tanaka",
+    name: "Obinna Chukwu",
     avatar: "🎹",
     teaches: ["Piano", "Music Theory"],
     wants: ["Painting", "Yoga"],
@@ -133,6 +136,28 @@ const BrowseSkills = () => {
   const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [search, setSearch] = useState("");
   const gridRef = useStaggeredAnimate<HTMLDivElement>(80);
+  const { toast } = useToast();
+  const [swapDialog, setSwapDialog] = useState<{ open: boolean; personName: string }>({ open: false, personName: "" });
+  const [offerSkill, setOfferSkill] = useState("");
+  const [offerError, setOfferError] = useState("");
+
+  const openSwapDialog = (name: string) => {
+    setOfferSkill("");
+    setOfferError("");
+    setSwapDialog({ open: true, personName: name });
+  };
+
+  const handleSendSwap = () => {
+    if (!offerSkill.trim()) {
+      setOfferError("You must offer a skill in exchange to send this request.");
+      return;
+    }
+    setSwapDialog({ open: false, personName: "" });
+    toast({
+      title: `Swap request sent to ${swapDialog.personName} successfully!`,
+      description: `You offered to teach: ${offerSkill}`,
+    });
+  };
 
   // Keep state & URL in sync
   useEffect(() => {
@@ -298,6 +323,7 @@ const BrowseSkills = () => {
                   className="w-full rounded-xl gap-2"
                   variant="outline"
                   size="sm"
+                  onClick={() => openSwapDialog(person.name)}
                 >
                   <MessageSquare className="w-4 h-4" />
                   Send swap request
@@ -312,6 +338,31 @@ const BrowseSkills = () => {
           </div>
         )}
       </div>
+
+      <Dialog open={swapDialog.open} onOpenChange={(open) => setSwapDialog((d) => ({ ...d, open }))}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Exchange with {swapDialog.personName}</DialogTitle>
+          </DialogHeader>
+          <p className="text-sm text-muted-foreground">
+            SkillSwap is teach-and-learn — you can only gain a skill by offering one in return.
+          </p>
+          <div className="space-y-2 mt-2">
+            <Label htmlFor="browse-offer-skill">What will you teach {swapDialog.personName}?</Label>
+            <Input
+              id="browse-offer-skill"
+              placeholder="e.g. Photography, Guitar, Coding..."
+              value={offerSkill}
+              onChange={(e) => { setOfferSkill(e.target.value); setOfferError(""); }}
+            />
+            {offerError && <p className="text-xs text-destructive">{offerError}</p>}
+          </div>
+          <DialogFooter className="mt-4">
+            <Button variant="outline" onClick={() => setSwapDialog({ open: false, personName: "" })}>Cancel</Button>
+            <Button onClick={handleSendSwap}>Send Request</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
