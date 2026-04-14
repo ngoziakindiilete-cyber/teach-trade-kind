@@ -379,9 +379,7 @@ const Hero = () => {
               </Button>
             </div>
           </div>
-          <div className="relative">
-            <SkillSwapIllustration />
-          </div>
+
         </div>
       </div>
     </section>
