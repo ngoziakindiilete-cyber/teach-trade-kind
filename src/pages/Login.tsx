@@ -47,7 +47,7 @@ const Login = () => {
           className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
         >
           <ArrowLeft className="w-4 h-4" />
-          Back
+          Back....
         </button>
         <div className="text-center">
           <Link to="/" className="inline-flex items-center gap-2 mb-6">
