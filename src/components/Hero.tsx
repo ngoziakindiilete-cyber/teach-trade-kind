@@ -346,40 +346,49 @@ const Hero = () => {
   const navigate = useNavigate();
   return (
     <section className="relative overflow-hidden py-20 md:py-28">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-1.5 text-sm font-medium text-secondary-foreground">
-              🤝 No money. Just skills.
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground text-balance leading-tight">
-              Swap skills,
-              <br />
-              <span className="text-primary">grow together</span>
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-md text-balance">
-              Teach what you know, learn what you love. Connect with people who
-              want to exchange skills — no money needed.
-            </p>
-            <div className="flex flex-wrap gap-3 pt-2">
-              <Button
-                size="lg"
-                className="rounded-full text-base px-8 gap-2"
-                onClick={() => navigate("/my-skills")}
-              >
-                Get Started <ArrowRight className="w-4 h-4" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="rounded-full text-base px-8"
-                onClick={() => navigate("/browse")}
-              >
-                Browse Skills
-              </Button>
-            </div>
-          </div>
+      {/* Background illustration — anchored to right half */}
+      <div className="absolute inset-y-0 left-1/3 right-0 z-0 pointer-events-none" aria-hidden="true">
+        <img
+          src="/end-of-school-bro.svg"
+          alt=""
+          className="w-full h-full object-contain object-right"
+        />
+      </div>
 
+      {/* Gradient edge — only fades where illustration meets text */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-background via-background/40 via-40% to-transparent pointer-events-none" />
+
+      <div className="relative z-10 container mx-auto px-4">
+        <div className="max-w-xl space-y-6">
+          <div className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-1.5 text-sm font-medium text-secondary-foreground">
+            🤝 No money. Just skills.
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground text-balance leading-tight">
+            Swap skills,
+            <br />
+            <span className="text-primary">grow together</span>
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-md text-balance">
+            Teach what you know, learn what you love. Connect with people who
+            want to exchange skills — no money needed.
+          </p>
+          <div className="flex flex-wrap gap-3 pt-2">
+            <Button
+              size="lg"
+              className="rounded-full text-base px-8 gap-2"
+              onClick={() => navigate("/my-skills")}
+            >
+              Get Started <ArrowRight className="w-4 h-4" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="rounded-full text-base px-8"
+              onClick={() => navigate("/browse")}
+            >
+              Browse Skills
+            </Button>
+          </div>
         </div>
       </div>
     </section>
