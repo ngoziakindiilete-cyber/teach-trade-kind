@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/contexts/AuthContext";
-import { Repeat, ArrowLeft, Eye, EyeOff } from "lucide-react";
+import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Separator } from "@/components/ui/separator";
 
@@ -51,9 +51,7 @@ const Login = () => {
         </button>
         <div className="text-center">
           <Link to="/" className="inline-flex items-center gap-2 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <Repeat className="w-4 h-4 text-primary-foreground" />
-            </div>
+            <img src="/skillswap-icon.svg" alt="SkillSwap" className="w-8 h-8" />
             <span className="text-lg font-bold text-foreground">SkillSwap</span>
           </Link>
           <h1 className="text-2xl font-bold text-foreground">Welcome back</h1>

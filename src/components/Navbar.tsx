@@ -43,8 +43,11 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <Button variant="ghost" size="sm" className="rounded-full" asChild>
-                <Link to="/login">Log in</Link>
+              <Button variant="outline" size="sm" className="rounded-full gap-1.5 text-foreground hover:text-foreground hover:bg-muted border-border" asChild>
+                <Link to="/login">
+                  <Repeat className="w-4 h-4" />
+                  Log in
+                </Link>
               </Button>
               <Button size="sm" className="rounded-full" asChild>
                 <Link to="/signup">Sign up</Link>
