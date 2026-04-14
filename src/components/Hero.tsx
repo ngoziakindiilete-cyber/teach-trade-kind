@@ -5,328 +5,340 @@ import { useNavigate } from "react-router-dom";
 const SkillSwapIllustration = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 860 500"
+    viewBox="0 0 900 540"
     fill="none"
     className="w-full h-auto"
-    aria-label="Photographer shooting with camera and guitarist playing guitar, exchanging skills"
+    aria-label="Two people exchanging skills — one teaching guitar"
   >
     <defs>
-      <filter id="sh" x="-20%" y="-20%" width="140%" height="140%">
-        <feDropShadow dx="0" dy="8" stdDeviation="14" floodColor="#00000018" />
-      </filter>
-      <filter id="sh2" x="-30%" y="-30%" width="160%" height="160%">
-        <feDropShadow dx="0" dy="3" stdDeviation="6" floodColor="#00000022" />
-      </filter>
-      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="#EDFDF8" />
-        <stop offset="100%" stopColor="#F5F0FF" />
+      <linearGradient id="guitarBodyG" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stopColor="#F5C07A" />
+        <stop offset="60%" stopColor="#E8A84A" />
+        <stop offset="100%" stopColor="#C47A28" />
       </linearGradient>
-      <linearGradient id="tg" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#34D399" />
-        <stop offset="100%" stopColor="#059669" />
-      </linearGradient>
-      <linearGradient id="og" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#FB923C" />
-        <stop offset="100%" stopColor="#EA580C" />
-      </linearGradient>
-      <linearGradient id="guitar-body" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="#D97706" />
-        <stop offset="100%" stopColor="#92400E" />
-      </linearGradient>
-      <linearGradient id="keys-g" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#F8FAFC" />
-        <stop offset="100%" stopColor="#E2E8F0" />
+      <linearGradient id="guitar2G" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stopColor="#C1623A" />
+        <stop offset="60%" stopColor="#A84828" />
+        <stop offset="100%" stopColor="#8B3A1E" />
       </linearGradient>
     </defs>
 
-    {/* ── Background card ── */}
-    <rect width="860" height="500" rx="32" fill="url(#bg)" />
-    <circle cx="155" cy="300" r="220" fill="#2D9F88" fillOpacity="0.06" />
-    <circle cx="705" cy="300" r="220" fill="#F97316" fillOpacity="0.06" />
-    {/* floor shadow line */}
-    <line x1="30" y1="450" x2="830" y2="450" stroke="#E2E8F0" strokeWidth="2" />
+    {/* White background */}
+    <rect width="900" height="540" fill="white" />
 
-    {/* ══════════════════════════════════════════════════════════ */}
-    {/*  LEFT — PHOTOGRAPHER standing, camera pressed to eye      */}
-    {/* ══════════════════════════════════════════════════════════ */}
-    <ellipse cx="175" cy="452" rx="72" ry="10" fill="#2D9F88" fillOpacity="0.14" />
+    {/* ── FLOOR LINE ── */}
+    <line x1="60" y1="490" x2="840" y2="490" stroke="#E5E7EB" strokeWidth="2" />
 
-    {/* Shoes */}
-    <ellipse cx="158" cy="447" rx="22" ry="9" fill="#111827" />
-    <ellipse cx="193" cy="447" rx="22" ry="9" fill="#111827" />
-    {/* Trousers */}
-    <rect x="148" y="372" width="22" height="76" rx="11" fill="#1E3A5F" />
-    <rect x="182" y="372" width="22" height="76" rx="11" fill="#1E3A5F" />
-    {/* Body — teal jacket, slight forward lean */}
-    <path d="M136 262 Q133 236 175 229 Q217 236 215 262 L210 376 Q175 387 140 376 Z" fill="url(#tg)" />
-    {/* Jacket zip/detail */}
-    <path d="M168 235 L170 268 L175 250 L180 268 L182 235" fill="white" fillOpacity="0.22" />
-    {/* Neck */}
-    <rect x="165" y="223" width="20" height="16" rx="7" fill="#FDDBB4" />
-    {/* Head — male, tilted slightly toward camera */}
-    <ellipse cx="180" cy="196" rx="31" ry="33" fill="#FDDBB4" />
-    {/* Short dark hair */}
-    <path d="M149 196 Q149 163 180 159 Q211 163 211 196 Q204 177 180 175 Q156 177 149 196 Z" fill="#2D1700" />
-    {/* RIGHT eye — squinted shut (looking through viewfinder) */}
-    <path d="M187 195 Q192 192 197 195" stroke="#2C2C2C" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-    {/* LEFT eye — wide open, alert */}
-    <ellipse cx="168" cy="194" rx="5.5" ry="5.5" fill="#2C2C2C" />
-    <circle cx="170" cy="192" r="2" fill="white" />
-    {/* Concentration brows */}
-    <path d="M163 185 Q168 181 173 185" stroke="#8B6347" strokeWidth="2.2" strokeLinecap="round" fill="none" />
-    <path d="M185 185 Q190 181 195 184" stroke="#8B6347" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+    {/* ═══════════════════════════════════════════════════
+        PLANT FAR LEFT — tall red-leaf plant
+    ═══════════════════════════════════════════════════ */}
+    {/* pot */}
+    <path d="M52 490 L60 460 L88 460 L96 490Z" fill="#E8845C" />
+    <rect x="56" y="456" width="36" height="8" rx="3" fill="#D4704C" />
+    {/* stem */}
+    <line x1="74" y1="458" x2="74" y2="402" stroke="#4A7C59" strokeWidth="4" strokeLinecap="round" />
+    {/* red leaves */}
+    <path d="M74 440 C74 440 94 426 100 412 C88 420 74 440 74 440Z" fill="#E05252" />
+    <path d="M74 434 C74 434 54 420 48 406 C60 414 74 434 74 434Z" fill="#EF6060" />
+    <path d="M74 422 C74 422 92 408 96 394 C84 404 74 422 74 422Z" fill="#E05252" />
+    <path d="M74 416 C74 416 56 404 50 390 C62 400 74 416 74 416Z" fill="#EF6060" />
+    <path d="M74 406 C74 406 88 394 90 380 C80 392 74 406 74 406Z" fill="#C43A3A" />
+    {/* small green accent leaf */}
+    <path d="M74 428 C74 428 84 434 92 430 C84 426 74 428 74 428Z" fill="#5AAA70" />
 
-    {/* RIGHT arm raised — hand gripping camera right side / shutter */}
-    <path d="M215 262 Q250 246 262 226 Q270 212 263 203" stroke="#FDDBB4" strokeWidth="16" strokeLinecap="round" fill="none" />
-    {/* LEFT arm raised — hand under lens supporting */}
-    <path d="M136 262 Q100 257 88 244 Q78 232 82 218" stroke="#FDDBB4" strokeWidth="16" strokeLinecap="round" fill="none" />
+    {/* ── PLANT LEFT SMALL — shorter green plant ── */}
+    <path d="M118 490 L124 468 L146 468 L152 490Z" fill="#F0945A" />
+    <rect x="121" y="464" width="28" height="7" rx="3" fill="#DC7A46" />
+    <line x1="135" y1="463" x2="135" y2="430" stroke="#4A7C59" strokeWidth="3.5" strokeLinecap="round" />
+    <path d="M135 450 C135 450 150 440 155 430 C144 436 135 450 135 450Z" fill="#5AAA70" />
+    <path d="M135 444 C135 444 120 434 115 424 C126 430 135 444 135 444Z" fill="#48986A" />
+    <path d="M135 438 C135 438 148 430 152 422 C142 428 135 438 135 438Z" fill="#5AAA70" />
 
-    {/* ── DSLR CAMERA — raised to eye level ── */}
-    {/* Camera body */}
-    <rect x="80" y="196" width="184" height="60" rx="11" fill="#1E293B" filter="url(#sh2)" />
-    {/* Right grip */}
-    <rect x="244" y="196" width="30" height="60" rx="10" fill="#0F172A" />
-    {/* Shutter button */}
-    <circle cx="259" cy="196" r="9" fill="#DC2626" />
-    <circle cx="259" cy="196" r="5.5" fill="#991B1B" />
-    {/* Top viewfinder hump */}
-    <rect x="144" y="183" width="28" height="15" rx="6" fill="#334155" />
-    {/* Pop-up flash */}
-    <rect x="104" y="185" width="22" height="11" rx="4" fill="#475569" />
-    {/* Hot shoe rail */}
-    <rect x="112" y="188" width="55" height="8" rx="3" fill="#374151" />
-    {/* LENS — large, detailed, facing viewer */}
-    <circle cx="160" cy="226" r="28" fill="#0F172A" />
-    <circle cx="160" cy="226" r="22" fill="#1E3A5F" />
-    <circle cx="160" cy="226" r="15" fill="#2563EB" fillOpacity="0.55" />
-    <circle cx="160" cy="226" r="9"  fill="#3B82F6" fillOpacity="0.75" />
-    <circle cx="160" cy="226" r="4"  fill="#93C5FD" />
-    {/* Lens barrel ring */}
-    <circle cx="160" cy="226" r="28" stroke="#334155" strokeWidth="3.5" />
-    <circle cx="160" cy="226" r="22" stroke="#1D4ED8" strokeWidth="1.5" strokeOpacity="0.45" />
-    {/* Glass shine */}
-    <circle cx="150" cy="217" r="5" fill="white" fillOpacity="0.2" />
-    <circle cx="155" cy="214" r="2" fill="white" fillOpacity="0.4" />
-    {/* Focus ring texture */}
-    <rect x="82" y="204" width="10" height="42" rx="5" fill="#475569" />
-    {/* Mode dial */}
-    <circle cx="232" cy="201" r="9" fill="#334155" />
-    <circle cx="232" cy="201" r="5.5" fill="#475569" />
-    {/* Neck strap */}
-    <path d="M90 205 Q74 182 80 162" stroke="#94A3B8" strokeWidth="5" strokeLinecap="round" fill="none" />
-    <path d="M264 205 Q280 182 274 162" stroke="#94A3B8" strokeWidth="5" strokeLinecap="round" fill="none" />
+    {/* ═══════════════════════════════════════════════════
+        PLANT CENTRE — medium terracotta plant
+    ═══════════════════════════════════════════════════ */}
+    <path d="M418 490 L425 464 L451 464 L458 490Z" fill="#E8845C" />
+    <rect x="421" y="460" width="32" height="7" rx="3" fill="#D4704C" />
+    <line x1="438" y1="460" x2="438" y2="420" stroke="#4A7C59" strokeWidth="3.5" strokeLinecap="round" />
+    <path d="M438 438 C438 438 454 426 460 414 C448 422 438 438 438 438Z" fill="#EF6060" />
+    <path d="M438 432 C438 432 422 420 416 408 C428 416 438 432 438 432Z" fill="#E05252" />
+    <path d="M438 444 C438 444 452 436 456 428 C446 434 438 444 438 444Z" fill="#5AAA70" />
 
-    {/* ══════════════════════════════════════════════════════════ */}
-    {/*  RIGHT — GUITARIST seated, playing acoustic guitar        */}
-    {/* ══════════════════════════════════════════════════════════ */}
-    <ellipse cx="678" cy="452" rx="80" ry="10" fill="#F97316" fillOpacity="0.14" />
+    {/* ═══════════════════════════════════════════════════
+        PLANT RIGHT SMALL
+    ═══════════════════════════════════════════════════ */}
+    <path d="M740 490 L746 468 L768 468 L774 490Z" fill="#F0945A" />
+    <rect x="743" y="464" width="28" height="7" rx="3" fill="#DC7A46" />
+    <line x1="757" y1="463" x2="757" y2="428" stroke="#4A7C59" strokeWidth="3.5" strokeLinecap="round" />
+    <path d="M757 448 C757 448 772 436 776 426 C765 434 757 448 757 448Z" fill="#EF6060" />
+    <path d="M757 442 C757 442 742 432 736 422 C748 428 757 442 757 442Z" fill="#E05252" />
+    <path d="M757 438 C757 438 770 430 774 422 C764 428 757 438 757 438Z" fill="#5AAA70" />
 
-    {/* ── STOOL ── */}
-    {/* seat */}
-    <rect x="646" y="374" width="66" height="13" rx="6" fill="#B45309" />
-    {/* 4 legs */}
-    <rect x="650" y="386" width="9" height="62" rx="4" fill="#92400E" />
-    <rect x="700" y="386" width="9" height="62" rx="4" fill="#92400E" />
-    <rect x="650" y="386" width="9" height="62" rx="4" fill="#92400E" transform="skewX(-5)" />
-    <rect x="700" y="386" width="9" height="62" rx="4" fill="#92400E" transform="skewX(5)" />
-    {/* rung */}
-    <line x1="654" y1="422" x2="706" y2="422" stroke="#92400E" strokeWidth="7" strokeLinecap="round" />
+    {/* ── PLANT FAR RIGHT — tall green plant ── */}
+    <path d="M800 490 L808 460 L836 460 L844 490Z" fill="#E8845C" />
+    <rect x="804" y="456" width="36" height="8" rx="3" fill="#D4704C" />
+    <line x1="822" y1="456" x2="822" y2="398" stroke="#4A7C59" strokeWidth="4" strokeLinecap="round" />
+    <path d="M822 436 C822 436 842 422 848 408 C836 416 822 436 822 436Z" fill="#5AAA70" />
+    <path d="M822 430 C822 430 802 416 796 402 C808 410 822 430 822 430Z" fill="#48986A" />
+    <path d="M822 420 C822 420 838 408 842 396 C830 404 822 420 822 420Z" fill="#5AAA70" />
+    <path d="M822 414 C822 414 806 402 800 390 C812 398 822 414 822 414Z" fill="#48986A" />
+    <path d="M822 440 C822 440 836 432 840 424 C830 430 822 440 822 440Z" fill="#EF6060" />
 
-    {/* Legs seated — hang down from stool */}
-    <path d="M652 380 Q640 396 622 410 Q614 418 612 430" stroke="#374151" strokeWidth="20" strokeLinecap="round" fill="none" />
-    <path d="M708 380 Q720 396 738 410 Q746 418 748 430" stroke="#374151" strokeWidth="20" strokeLinecap="round" fill="none" />
-    {/* Feet / shoes */}
-    <ellipse cx="612" cy="435" rx="18" ry="9" fill="#111827" />
-    <ellipse cx="748" cy="435" rx="18" ry="9" fill="#111827" />
+    {/* ═══════════════════════════════════════════════════
+        LEFT FIGURE — BEARDED TEACHER (standing, white apron)
+        centre ~x=230
+    ═══════════════════════════════════════════════════ */}
 
-    {/* Body — warm orange top */}
-    <path d="M630 268 Q626 244 678 237 Q730 244 726 268 L720 380 Q678 390 636 380 Z" fill="url(#og)" />
-    {/* Shirt collar v-neck */}
-    <path d="M662 246 L678 272 L694 246" fill="none" stroke="white" strokeOpacity="0.3" strokeWidth="2" />
-    {/* Neck */}
-    <rect x="668" y="232" width="20" height="16" rx="7" fill="#C8956C" />
-    {/* Head — male, slight downward tilt looking at fretboard */}
-    <ellipse cx="680" cy="204" rx="32" ry="34" fill="#C8956C" />
-    {/* Short dark hair */}
-    <path d="M648 204 Q648 170 680 166 Q712 170 712 204 Q705 184 680 182 Q655 184 648 204 Z" fill="#2D1700" />
-    <rect x="648" y="204" width="10" height="24" rx="5" fill="#2D1700" />
-    <rect x="702" y="204" width="10" height="24" rx="5" fill="#2D1700" />
-    {/* Eyes — looking slightly down at guitar */}
-    <ellipse cx="668" cy="203" rx="5.5" ry="5" fill="#2C2C2C" />
-    <ellipse cx="692" cy="203" rx="5.5" ry="5" fill="#2C2C2C" />
-    <circle cx="670" cy="201" r="2" fill="white" />
-    <circle cx="694" cy="201" r="2" fill="white" />
-    {/* Content smile */}
-    <path d="M666 217 Q680 226 693 218" stroke="#8B5E3C" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+    {/* shadow */}
+    <ellipse cx="230" cy="492" rx="85" ry="8" fill="#D1D5DB" fillOpacity="0.5" />
 
-    {/* LEFT ARM — around guitar neck, fretting */}
-    <path d="M630 272 Q600 270 582 260 Q566 250 558 238" stroke="#C8956C" strokeWidth="16" strokeLinecap="round" fill="none" />
-    {/* RIGHT ARM — strumming arm across guitar body */}
-    <path d="M726 272 Q752 280 762 306 Q768 322 762 340" stroke="#C8956C" strokeWidth="16" strokeLinecap="round" fill="none" />
+    {/* SHOES */}
+    <path d="M196 476 Q188 476 184 484 Q180 490 196 490 L226 490 Q234 488 234 482 Q232 474 224 474Z" fill="#2A2A2A" />
+    <path d="M240 474 Q232 474 230 482 Q228 488 236 490 L266 490 Q278 490 278 484 Q278 476 268 476Z" fill="#2A2A2A" />
 
-    {/* ── ACOUSTIC GUITAR ── */}
-    {/* Guitar body — figure-8 shape */}
-    {/* Lower bout (larger) */}
-    <ellipse cx="694" cy="360" rx="58" ry="68" fill="url(#guitar-body)" />
-    {/* Upper bout (smaller) */}
-    <ellipse cx="686" cy="272" rx="44" ry="52" fill="url(#guitar-body)" />
-    {/* Body edge highlight */}
-    <ellipse cx="694" cy="360" rx="58" ry="68" stroke="#F59E0B" strokeWidth="3" strokeOpacity="0.5" />
-    <ellipse cx="686" cy="272" rx="44" ry="52" stroke="#F59E0B" strokeWidth="3" strokeOpacity="0.5" />
-    {/* Sound hole */}
-    <circle cx="690" cy="330" r="22" fill="#1C0A00" />
-    <circle cx="690" cy="330" r="20" fill="#2D1300" />
-    {/* Rosette ring around sound hole */}
-    <circle cx="690" cy="330" r="22" stroke="#F59E0B" strokeWidth="2.5" strokeOpacity="0.6" />
-    <circle cx="690" cy="330" r="25" stroke="#B45309" strokeWidth="1.5" strokeOpacity="0.4" />
-    {/* Strings — 6 strings across body */}
-    {[0,1,2,3,4,5].map(i => (
-      <line key={i} x1={676 + i * 4} y1="220" x2={676 + i * 4} y2="418"
-        stroke={i < 2 ? "#D4A853" : "#E8C870"} strokeWidth={i < 2 ? 2 : 1.2} strokeOpacity="0.9" />
+    {/* DARK TROUSERS with coloured cuffs */}
+    {/* left leg */}
+    <path d="M200 350 L196 476 Q210 482 224 476 L228 350Z" fill="#2C3E50" />
+    {/* right leg */}
+    <path d="M236 350 L240 476 Q254 482 268 476 L264 350Z" fill="#2C3E50" />
+    {/* teal/green cuffs at ankle */}
+    <rect x="196" y="462" width="30" height="14" rx="4" fill="#3D8F6E" />
+    <rect x="240" y="462" width="28" height="14" rx="4" fill="#3D8F6E" />
+
+    {/* WHITE APRON over body */}
+    {/* apron body */}
+    <path d="M190 240 Q188 218 230 212 Q272 218 270 240 L264 360 Q230 372 196 360Z" fill="#F5F5F0" stroke="#E0E0D8" strokeWidth="1.5" />
+    {/* apron bib */}
+    <path d="M208 212 L210 256 Q230 264 250 256 L252 212 Q240 204 230 204 Q220 204 208 212Z" fill="#EEEDE8" stroke="#D8D7D0" strokeWidth="1" />
+    {/* apron ties at waist */}
+    <path d="M190 292 Q162 286 148 278 Q138 270 140 260" stroke="#DDDDD5" strokeWidth="8" strokeLinecap="round" fill="none" />
+    <path d="M270 292 Q298 286 312 278 Q322 270 320 260" stroke="#DDDDD5" strokeWidth="8" strokeLinecap="round" fill="none" />
+    {/* apron pocket */}
+    <rect x="215" y="316" width="30" height="24" rx="4" fill="#E8E8E0" stroke="#D0D0C8" strokeWidth="1" />
+
+    {/* NECK */}
+    <rect x="218" y="202" width="24" height="16" rx="8" fill="#D4956A" />
+
+    {/* HEAD */}
+    <ellipse cx="230" cy="172" rx="38" ry="40" fill="#D4956A" />
+
+    {/* EAR */}
+    <ellipse cx="192" cy="174" rx="8" ry="11" fill="#C4855A" />
+    <ellipse cx="268" cy="174" rx="8" ry="11" fill="#C4855A" />
+
+    {/* DARK HAIR */}
+    <path d="M192 172 Q192 130 230 124 Q268 130 268 172 Q260 148 230 146 Q200 148 192 172Z" fill="#2D1A0E" />
+    <rect x="192" y="168" width="12" height="20" rx="6" fill="#2D1A0E" />
+    <rect x="266" y="168" width="12" height="20" rx="6" fill="#2D1A0E" />
+
+    {/* BEARD */}
+    <path d="M193 190 Q194 214 212 224 Q230 230 248 224 Q266 214 267 190 Q254 202 230 204 Q206 202 193 190Z" fill="#2D1A0E" />
+    <path d="M210 218 Q230 228 250 218 Q238 232 230 234 Q222 232 210 218Z" fill="#221308" />
+
+    {/* EYES */}
+    <ellipse cx="216" cy="166" rx="7" ry="7.5" fill="white" />
+    <ellipse cx="244" cy="166" rx="7" ry="7.5" fill="white" />
+    <ellipse cx="217" cy="167" rx="5" ry="5.5" fill="#3A2010" />
+    <ellipse cx="245" cy="167" rx="5" ry="5.5" fill="#3A2010" />
+    <circle cx="219" cy="165" r="2" fill="white" />
+    <circle cx="247" cy="165" r="2" fill="white" />
+    {/* SMILE */}
+    <path d="M214 182 Q230 194 246 182" stroke="#A0622A" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+    {/* BROWS */}
+    <path d="M207 156 Q215 150 223 155" stroke="#2D1A0E" strokeWidth="3" fill="none" strokeLinecap="round" />
+    <path d="M237 155 Q245 150 253 156" stroke="#2D1A0E" strokeWidth="3" fill="none" strokeLinecap="round" />
+
+    {/* LEFT ARM raised — holding mug */}
+    <path d="M190 248 Q162 234 148 218 Q138 206 144 192" stroke="#C4855A" strokeWidth="22" strokeLinecap="round" fill="none" />
+    {/* MUG in left hand */}
+    <rect x="120" y="176" width="36" height="30" rx="8" fill="#E8F4F8" stroke="#B0CCD8" strokeWidth="2" />
+    <path d="M156 184 Q170 184 170 196 Q170 208 156 208" stroke="#B0CCD8" strokeWidth="3" fill="none" strokeLinecap="round" />
+    {/* red liquid in mug */}
+    <rect x="122" y="195" width="32" height="9" rx="0 0 6 6" fill="#E05252" fillOpacity="0.7" />
+
+    {/* RIGHT ARM — reaching toward guitar neck */}
+    <path d="M270 248 Q340 226 400 220 Q430 218 454 226" stroke="#C4855A" strokeWidth="22" strokeLinecap="round" fill="none" />
+    {/* right hand near guitar neck */}
+    <ellipse cx="458" cy="228" rx="16" ry="12" fill="#C4855A" />
+    {[450, 456, 462, 468].map(x => (
+      <rect key={x} x={x} y="218" width="8" height="16" rx="4" fill="#C4855A" />
     ))}
-    {/* Bridge */}
-    <rect x="672" y="388" width="40" height="8" rx="3" fill="#5C2D0A" />
-    {/* Bridge saddle */}
-    <rect x="672" y="390" width="40" height="3" rx="1.5" fill="#FBBF24" />
-    {/* Nut at neck join */}
-    <rect x="674" y="218" width="36" height="5" rx="2" fill="#FDE68A" />
-    {/* Guitar NECK */}
-    <rect x="676" y="160" width="28" height="62" rx="8" fill="#92400E" />
-    {/* Neck wood grain */}
-    <line x1="682" y1="162" x2="682" y2="220" stroke="#7C3416" strokeWidth="1" strokeOpacity="0.5" />
-    <line x1="690" y1="162" x2="690" y2="220" stroke="#7C3416" strokeWidth="1" strokeOpacity="0.5" />
-    <line x1="698" y1="162" x2="698" y2="220" stroke="#7C3416" strokeWidth="1" strokeOpacity="0.5" />
-    {/* Frets */}
-    {[170,182,194,206,216].map(y => (
-      <line key={y} x1="676" y1={y} x2="704" y2={y} stroke="#FDE68A" strokeWidth="2" strokeOpacity="0.7" />
-    ))}
-    {/* Headstock */}
-    <rect x="672" y="138" width="36" height="26" rx="6" fill="#7C3416" />
-    {/* Tuning pegs — 3 each side */}
-    {[142,152,162].map(y => (
-      <g key={y}>
-        <rect x="662" y={y-3} width="12" height="6" rx="3" fill="#B45309" />
-        <circle cx="659" cy={y} r="4" fill="#D97706" />
-      </g>
-    ))}
-    {[142,152,162].map(y => (
-      <g key={y}>
-        <rect x="706" y={y-3} width="12" height="6" rx="3" fill="#B45309" />
-        <circle cx="721" cy={y} r="4" fill="#D97706" />
-      </g>
-    ))}
-    {/* Left hand fingers on frets */}
-    {[0,1,2,3].map(i => (
-      <ellipse key={i} cx={560 + i * 0} cy={242 + i * 6} rx="6" ry="5" fill="#C8956C" />
-    ))}
-    {/* Strumming right hand */}
-    <ellipse cx="762" cy="344" rx="14" ry="10" fill="#C8956C" />
-    {[756,761,766,771].map(x => (
-      <rect key={x} x={x} y="338" width="5" height="11" rx="2.5" fill="#C8956C" />
-    ))}
-    {/* Pick */}
-    <path d="M756 344 Q759 348 762 344 Q759 338 756 344 Z" fill="#FCD34D" />
 
-    {/* Music notes floating from guitar */}
-    <text x="610" y="225" fontSize="22" fill="#F97316" fillOpacity="0.75">♪</text>
-    <text x="642" y="200" fontSize="18" fill="#FB923C" fillOpacity="0.65">♫</text>
-    <text x="724" y="195" fontSize="24" fill="#F97316" fillOpacity="0.7">♩</text>
-    <text x="752" y="218" fontSize="16" fill="#FDBA74" fillOpacity="0.6">♬</text>
+    {/* ═══════════════════════════════════════════════════
+        ACOUSTIC GUITAR (held between the two figures)
+        neck points left toward teacher, body below student
+    ═══════════════════════════════════════════════════ */}
 
-    {/* ══════════════════════════════════════════════════════════════════ */}
-    {/*  FLOATING SKILL ICONS — 6 badges scattered around centre hub     */}
-    {/* ══════════════════════════════════════════════════════════════════ */}
-
-    {/* TOP-LEFT — Camera mini badge */}
-    <g transform="translate(90,108)">
-      <circle r="26" fill="#ECFDF5" filter="url(#sh2)" />
-      <rect x="-12" y="-8" width="24" height="16" rx="4" fill="#059669" />
-      <circle r="5.5" fill="#ECFDF5" fillOpacity="0.8" />
-      <circle r="3" fill="#059669" fillOpacity="0.5" />
-      <rect x="-4" y="-13" width="9" height="6" rx="2" fill="#059669" />
+    {/* GUITAR NECK — angled from ~x=460,y=228 down to ~x=550,y=310 */}
+    {/* Straight neck, rotated */}
+    <g transform="rotate(-18, 510, 290)">
+      {/* neck board */}
+      <rect x="442" y="218" width="140" height="28" rx="10" fill="#8B4513" />
+      <rect x="444" y="220" width="136" height="24" rx="8" fill="#7C3A10" />
+      {/* frets */}
+      {[460, 475, 490, 505, 520, 535, 548, 561, 572].map(x => (
+        <line key={x} x1={x} y1="220" x2={x} y2="244" stroke="#C9942A" strokeWidth="2" strokeOpacity="0.8" />
+      ))}
+      {/* dot markers */}
+      <circle cx="497" cy="231" r="3.5" fill="#C9942A" fillOpacity="0.55" />
+      <circle cx="525" cy="231" r="3.5" fill="#C9942A" fillOpacity="0.55" />
+      {/* 6 strings */}
+      {[225, 228, 231, 234, 237, 240].map(y => (
+        <line key={y} x1="444" y1={y} x2="582" y2={y} stroke={y < 230 ? "#B8860B" : "#D4A853"} strokeWidth={y < 230 ? 2 : 1.2} strokeOpacity="0.9" />
+      ))}
+      {/* nut */}
+      <rect x="440" y="218" width="7" height="28" rx="3" fill="#FDE68A" />
+      {/* headstock */}
+      <path d="M432 218 Q428 210 434 204 L448 204 Q454 210 450 218Z" fill="#7C3A10" />
+      {/* tuning pegs */}
+      {[208, 216, 224].map(y => (
+        <g key={y}>
+          <rect x="418" y={y - 4} width="14" height="8" rx="4" fill="#A05C1A" />
+          <circle cx="416" cy={y} r="6" fill="#C47A28" />
+          <circle cx="416" cy={y} r="3" fill="#FDE68A" />
+        </g>
+      ))}
+      {[208, 216, 224].map(y => (
+        <g key={y}>
+          <rect x="450" y={y - 4} width="14" height="8" rx="4" fill="#A05C1A" />
+          <circle cx="465" cy={y} r="6" fill="#C47A28" />
+          <circle cx="465" cy={y} r="3" fill="#FDE68A" />
+        </g>
+      ))}
     </g>
 
-    {/* TOP-CENTRE-LEFT — Paintbrush badge */}
-    <g transform="translate(300,62)">
-      <circle r="24" fill="#FEF3C7" filter="url(#sh2)" />
-      <rect x="-3" y="-14" width="7" height="21" rx="3" fill="#D97706" transform="rotate(-30)" />
-      <circle cx="0" cy="11" r="6" fill="#FDE68A" />
-    </g>
+    {/* GUITAR BODY — large, centred around x=590, y=390 */}
+    {/* upper bout */}
+    <ellipse cx="588" cy="360" rx="72" ry="78" fill="url(#guitarBodyG)" />
+    {/* waist */}
+    <rect x="520" y="396" width="136" height="32" rx="15" fill="url(#guitarBodyG)" />
+    {/* lower bout */}
+    <ellipse cx="588" cy="440" rx="84" ry="90" fill="url(#guitarBodyG)" />
+    {/* binding edge */}
+    <ellipse cx="588" cy="360" rx="72" ry="78" stroke="#C47A28" strokeWidth="3" strokeOpacity="0.5" />
+    <ellipse cx="588" cy="440" rx="84" ry="90" stroke="#C47A28" strokeWidth="3" strokeOpacity="0.5" />
+    {/* sheen */}
+    <ellipse cx="570" cy="348" rx="26" ry="30" fill="white" fillOpacity="0.14" />
+    {/* sound hole */}
+    <circle cx="588" cy="400" r="34" fill="#2A1000" />
+    <circle cx="588" cy="400" r="30" fill="#1A0800" />
+    <circle cx="588" cy="400" r="34" stroke="#C47A28" strokeWidth="3.5" strokeOpacity="0.75" />
+    <circle cx="588" cy="400" r="39" stroke="#A05C1A" strokeWidth="1.5" strokeOpacity="0.35" />
+    {/* strings over body */}
+    {[578, 582, 586, 590, 594, 598].map(x => (
+      <line key={x} x1={x} y1="290" x2={x} y2="490" stroke={x < 583 ? "#B8860B" : "#D4A853"} strokeWidth={x < 583 ? 2 : 1.2} strokeOpacity="0.85" />
+    ))}
+    {/* bridge */}
+    <rect x="564" y="466" width="50" height="12" rx="5" fill="#5C2D0A" />
+    <rect x="564" y="468" width="50" height="5" rx="2.5" fill="#FBBF24" />
+    {[0, 1, 2, 3, 4, 5].map(i => (
+      <circle key={i} cx={570 + i * 8} cy={466} r="3" fill="#7C3A10" />
+    ))}
 
-    {/* TOP-CENTRE-RIGHT — Music notes badge */}
-    <g transform="translate(560,62)">
-      <circle r="24" fill="#EDE9FE" filter="url(#sh2)" />
-      <text x="-10" y="9" fontSize="22" fill="#7C3AED">♫</text>
-    </g>
+    {/* ═══════════════════════════════════════════════════
+        RIGHT FIGURE — STUDENT GUITARIST (seated, coral shirt)
+        centre ~x=680
+    ═══════════════════════════════════════════════════ */}
 
-    {/* TOP-RIGHT — Guitar pick badge */}
-    <g transform="translate(770,108)">
-      <circle r="26" fill="#FFF7ED" filter="url(#sh2)" />
-      <path d="M0,-14 Q12,0 0,14 Q-12,0 0,-14 Z" fill="#F97316" />
-      <circle r="3" fill="white" fillOpacity="0.6" />
-    </g>
+    {/* shadow */}
+    <ellipse cx="688" cy="492" rx="90" ry="8" fill="#D1D5DB" fillOpacity="0.5" />
 
-    {/* BOTTOM-LEFT — Code badge */}
-    <g transform="translate(96,388)">
-      <circle r="24" fill="#F0F9FF" filter="url(#sh2)" />
-      <text x="-11" y="7" fontSize="14" fontFamily="monospace" fontWeight="bold" fill="#0369A1">&lt;/&gt;</text>
-    </g>
+    {/* STOOL */}
+    <rect x="646" y="390" width="88" height="16" rx="8" fill="#D97706" />
+    <rect x="651" y="405" width="12" height="84" rx="6" fill="#B45309" />
+    <rect x="718" y="405" width="12" height="84" rx="6" fill="#B45309" />
+    <line x1="657" y1="448" x2="726" y2="448" stroke="#92400E" strokeWidth="10" strokeLinecap="round" />
 
-    {/* BOTTOM-RIGHT — Star badge */}
-    <g transform="translate(764,388)">
-      <circle r="24" fill="#FEF9C3" filter="url(#sh2)" />
-      <text x="-10" y="9" fontSize="22" fill="#CA8A04">★</text>
-    </g>
+    {/* SHOES */}
+    <path d="M570 476 Q560 476 556 484 Q552 490 568 490 L606 490 Q616 488 616 482 Q614 474 604 474Z" fill="#2A2A2A" />
+    {/* sneaker detail */}
+    <line x1="560" y1="484" x2="608" y2="484" stroke="#444" strokeWidth="1.5" />
+    <path d="M786 476 Q796 476 800 484 Q804 490 788 490 L756 490 Q746 488 746 482 Q748 474 758 474Z" fill="#2A2A2A" />
+    <line x1="754" y1="484" x2="800" y2="484" stroke="#444" strokeWidth="1.5" />
 
-    {/* Subtle arc flow path */}
-    <path d="M142 410 Q300 160 430 155 Q560 160 718 410"
-      stroke="#94A3B8" strokeWidth="1.5" strokeDasharray="7 5"
-      fill="none" strokeOpacity="0.3" />
+    {/* JEANS — light blue, seated */}
+    {/* left thigh + lower leg */}
+    <path d="M636 400 Q616 420 598 444 Q582 462 578 476" stroke="#6B9FD4" strokeWidth="34" strokeLinecap="round" fill="none" />
+    {/* right thigh + lower leg */}
+    <path d="M744 400 Q764 420 778 444 Q790 462 792 476" stroke="#6B9FD4" strokeWidth="34" strokeLinecap="round" fill="none" />
+    {/* lap bridge */}
+    <rect x="634" y="386" width="112" height="28" rx="14" fill="#6B9FD4" />
 
-    {/* ══════════════════════════════════════════════════════════════════ */}
-    {/*  CENTRE — BOLD SKILL SWAP HUB                                    */}
-    {/* ══════════════════════════════════════════════════════════════════ */}
+    {/* BODY — coral/salmon shirt */}
+    <path d="M630 270 Q624 246 688 238 Q752 246 746 270 L740 398 Q688 412 636 398Z" fill="#E8785A" />
+    {/* shirt details — v-neck */}
+    <path d="M672 244 L688 276 L704 244 Q696 238 688 238 Q680 238 672 244Z" fill="#D4604A" />
+    {/* shirt collar / neck opening */}
+    <path d="M672 244 Q680 250 688 252 Q696 250 704 244 Q696 236 688 236 Q680 236 672 244Z" fill="#F0F0EE" />
 
-    {/* Outermost pulse ring */}
-    <circle cx="430" cy="248" r="96" fill="#2D9F88" fillOpacity="0.06" />
-    {/* Outer ring */}
-    <circle cx="430" cy="248" r="84" fill="#2D9F88" fillOpacity="0.1" />
-    {/* Main hub white circle */}
-    <circle cx="430" cy="248" r="74" fill="white" filter="url(#sh)" />
-    {/* Inner tinted fill */}
-    <circle cx="430" cy="248" r="68" fill="#ECFDF5" />
+    {/* NECK */}
+    <rect x="676" y="232" width="24" height="17" rx="8" fill="#C8956C" />
+    {/* necklace chain */}
+    <path d="M678 238 Q688 244 698 238" stroke="#E5C57A" strokeWidth="2" fill="none" strokeLinecap="round" />
 
-    {/* BOLD TOP ARROW → teal (teach photography) */}
-    <path d="M382 228 Q430 208 478 228"
-      stroke="#2D9F88" strokeWidth="9" strokeLinecap="round" fill="none" />
-    <path d="M466 216 L480 228 L466 240"
-      stroke="#2D9F88" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+    {/* HEAD */}
+    <ellipse cx="690" cy="198" rx="40" ry="42" fill="#C8956C" />
 
-    {/* BOLD BOTTOM ARROW ← orange (teach guitar) */}
-    <path d="M478 268 Q430 288 382 268"
-      stroke="#F97316" strokeWidth="9" strokeLinecap="round" fill="none" />
-    <path d="M394 280 L380 268 L394 256"
-      stroke="#F97316" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+    {/* EARS */}
+    <ellipse cx="650" cy="200" rx="8" ry="11" fill="#B8845C" />
+    <ellipse cx="730" cy="200" rx="8" ry="11" fill="#B8845C" />
 
-    {/* SkillSwap wordmark inside hub */}
-    <text x="430" y="244" textAnchor="middle"
-      fontFamily="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif"
-      fontSize="13" fontWeight="800" fill="#059669" letterSpacing="1">SKILL</text>
-    <text x="430" y="260" textAnchor="middle"
-      fontFamily="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif"
-      fontSize="13" fontWeight="800" fill="#EA580C" letterSpacing="1">SWAP</text>
+    {/* SHORT DARK HAIR */}
+    <path d="M650 196 Q650 152 690 146 Q730 152 730 196 Q722 168 690 166 Q658 168 650 196Z" fill="#2D1A0E" />
+    <rect x="650" y="192" width="12" height="18" rx="6" fill="#2D1A0E" />
+    <rect x="728" y="192" width="12" height="18" rx="6" fill="#2D1A0E" />
 
-    {/* FREE badge pill below hub */}
-    <rect x="388" y="304" width="84" height="28" rx="14" fill="#2D9F88" filter="url(#sh2)" />
-    <text x="430" y="322" textAnchor="middle"
-      fontFamily="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif"
-      fontSize="12" fontWeight="800" fill="white" letterSpacing="0.8">FREE · $0</text>
+    {/* EYES */}
+    <ellipse cx="674" cy="194" rx="8" ry="8.5" fill="white" />
+    <ellipse cx="706" cy="194" rx="8" ry="8.5" fill="white" />
+    <ellipse cx="675" cy="195" rx="6" ry="6.5" fill="#3A2010" />
+    <ellipse cx="707" cy="195" rx="6" ry="6.5" fill="#3A2010" />
+    <circle cx="677" cy="192" r="2.2" fill="white" />
+    <circle cx="709" cy="192" r="2.2" fill="white" />
+    {/* SMILE friendly */}
+    <path d="M671 212 Q688 226 706 213" stroke="#A0622A" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+    {/* BROWS */}
+    <path d="M663 183 Q672 177 681 182" stroke="#2D1A0E" strokeWidth="3" fill="none" strokeLinecap="round" />
+    <path d="M699 182 Q708 177 717 183" stroke="#2D1A0E" strokeWidth="3" fill="none" strokeLinecap="round" />
 
-    {/* Connecting dashed lines from hub to figures */}
-    <line x1="356" y1="248" x2="278" y2="238"
-      stroke="#2D9F88" strokeWidth="2" strokeDasharray="5 4" strokeOpacity="0.4" />
-    <line x1="504" y1="248" x2="586" y2="268"
-      stroke="#F97316" strokeWidth="2" strokeDasharray="5 4" strokeOpacity="0.4" />
+    {/* LEFT ARM — reaching forward to guitar neck (upper frets) */}
+    <path d="M630 278 Q574 258 528 244 Q502 236 482 232" stroke="#C8956C" strokeWidth="22" strokeLinecap="round" fill="none" />
+    {/* left hand fingering frets */}
+    <ellipse cx="476" cy="232" rx="16" ry="12" fill="#C8956C" />
+    {[468, 474, 480, 486].map(x => (
+      <rect key={x} x={x} y="222" width="8" height="16" rx="4" fill="#C8956C" />
+    ))}
+
+    {/* RIGHT ARM — strumming over sound hole */}
+    <path d="M746 278 Q772 294 796 330 Q810 356 810 380" stroke="#C8956C" strokeWidth="22" strokeLinecap="round" fill="none" />
+    {/* strumming hand */}
+    <ellipse cx="810" cy="388" rx="18" ry="14" fill="#C8956C" />
+    {[800, 807, 814, 821].map(x => (
+      <rect key={x} x={x} y="378" width="9" height="18" rx="4.5" fill="#C8956C" />
+    ))}
+    {/* pick */}
+    <path d="M797 392 Q806 402 814 390 Q806 380 797 392Z" fill="#FCD34D" />
+
+    {/* ── SMALL CHILD watching from behind right side ── */}
+    {/* body */}
+    <ellipse cx="826" cy="280" rx="22" ry="24" fill="#6DD4B4" />
+    {/* head */}
+    <ellipse cx="826" cy="248" rx="22" ry="23" fill="#C8956C" />
+    {/* teal hair */}
+    <path d="M804 248 Q804 222 826 218 Q848 222 848 248 Q842 232 826 230 Q810 232 804 248Z" fill="#4ABFA0" />
+    <rect x="804" y="244" width="10" height="14" rx="5" fill="#4ABFA0" />
+    {/* tiny eyes + smile */}
+    <ellipse cx="818" cy="246" rx="4.5" ry="5" fill="white" />
+    <ellipse cx="834" cy="246" rx="4.5" ry="5" fill="white" />
+    <ellipse cx="819" cy="247" rx="3" ry="3.5" fill="#3A2010" />
+    <ellipse cx="835" cy="247" rx="3" ry="3.5" fill="#3A2010" />
+    <path d="M816 258 Q826 266 836 259" stroke="#A0622A" strokeWidth="2" fill="none" strokeLinecap="round" />
+
+    {/* MUSIC NOTES floating */}
+    <text x="350" y="148" fontSize="22" fill="#F97316" fillOpacity="0.75">&#9835;</text>
+    <text x="376" y="128" fontSize="17" fill="#FB923C" fillOpacity="0.65">&#9834;</text>
+    <text x="510" y="138" fontSize="24" fill="#F97316" fillOpacity="0.72">&#9833;</text>
+    <text x="538" y="116" fontSize="18" fill="#FDBA74" fillOpacity="0.6">&#9835;</text>
   </svg>
 );
 
