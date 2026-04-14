@@ -18,9 +18,7 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <Repeat className="w-4 h-4 text-primary-foreground" />
-          </div>
+          <img src="/skillswap-icon.svg" alt="SkillSwap" className="w-8 h-8" />
           <span className="text-lg font-bold text-foreground">SkillSwap</span>
         </Link>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">

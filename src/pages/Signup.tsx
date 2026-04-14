@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { useAuth } from "@/contexts/AuthContext";
-import { Repeat, ArrowLeft, Eye, EyeOff } from "lucide-react";
+import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const NIGERIAN_STATES = [
@@ -91,9 +91,7 @@ const Signup = () => {
         </button>
         <div className="text-center">
           <Link to="/" className="inline-flex items-center gap-2 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <Repeat className="w-4 h-4 text-primary-foreground" />
-            </div>
+            <img src="/skillswap-icon.svg" alt="SkillSwap" className="w-8 h-8" />
             <span className="text-lg font-bold text-foreground">SkillSwap</span>
           </Link>
           <h1 className="text-2xl font-bold text-foreground">Create your account</h1>
