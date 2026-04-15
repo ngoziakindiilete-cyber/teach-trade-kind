@@ -1,6 +1,106 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState, useCallback } from "react";
+
+const SLIDES = [
+  "/end-of-school-bro.svg",
+  "/Seamstress-bro.svg",
+  "/tiler-bro.svg",
+  "/makeup-artist-bro.svg",
+  "/pastry-chef-bro.svg",
+  "/online-learning-bro.svg",
+  "/restorer-bro.svg",
+  "/manicurist-bro.svg",
+  "/female-chef-bro.svg",
+];
+
+const INTERVAL = 5000; // 5 seconds
+
+const BackgroundCarousel = () => {
+  const [current, setCurrent] = useState(0);
+  const [fading, setFading] = useState(false);
+
+  const goTo = useCallback((index: number) => {
+    setFading(true);
+    setTimeout(() => {
+      setCurrent(index);
+      setFading(false);
+    }, 300);
+  }, []);
+
+  const next = useCallback(() => {
+    goTo((current + 1) % SLIDES.length);
+  }, [current, goTo]);
+
+  const prev = useCallback(() => {
+    goTo((current - 1 + SLIDES.length) % SLIDES.length);
+  }, [current, goTo]);
+
+  // Auto-advance
+  useEffect(() => {
+    const timer = setInterval(next, INTERVAL);
+    return () => clearInterval(timer);
+  }, [next]);
+
+  return (
+    <>
+      {/* Slide images */}
+      <div className="absolute inset-y-0 left-1/3 right-0 z-0" aria-hidden="true">
+        {SLIDES.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt=""
+            className="absolute inset-0 w-full h-full object-contain object-right transition-opacity duration-500"
+            style={{ opacity: i === current ? (fading ? 0 : 1) : 0, pointerEvents: "none" }}
+          />
+        ))}
+      </div>
+
+      {/* Gradient edge */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-background via-background/40 via-40% to-transparent pointer-events-none" />
+
+      {/* Controls — sitting over the right panel */}
+      <div className="absolute z-10 right-6 bottom-6 flex items-center gap-3">
+        {/* Prev */}
+        <button
+          onClick={prev}
+          aria-label="Previous slide"
+          className="w-8 h-8 rounded-full bg-background/80 border border-border flex items-center justify-center shadow-sm hover:bg-background transition-colors"
+        >
+          <ChevronLeft className="w-4 h-4 text-foreground" />
+        </button>
+
+        {/* Dot indicators */}
+        <div className="flex items-center gap-1.5">
+          {SLIDES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className="rounded-full transition-all duration-300"
+              style={{
+                width: i === current ? "20px" : "8px",
+                height: "8px",
+                background: i === current ? "hsl(var(--primary))" : "hsl(var(--muted-foreground) / 0.4)",
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Next */}
+        <button
+          onClick={next}
+          aria-label="Next slide"
+          className="w-8 h-8 rounded-full bg-background/80 border border-border flex items-center justify-center shadow-sm hover:bg-background transition-colors"
+        >
+          <ChevronRight className="w-4 h-4 text-foreground" />
+        </button>
+      </div>
+    </>
+  );
+};
 
 const SkillSwapIllustration = () => (
   <svg
@@ -346,17 +446,7 @@ const Hero = () => {
   const navigate = useNavigate();
   return (
     <section className="relative overflow-hidden py-20 md:py-28">
-      {/* Background illustration — anchored to right half */}
-      <div className="absolute inset-y-0 left-1/3 right-0 z-0 pointer-events-none" aria-hidden="true">
-        <img
-          src="/end-of-school-bro.svg"
-          alt=""
-          className="w-full h-full object-contain object-right"
-        />
-      </div>
-
-      {/* Gradient edge — only fades where illustration meets text */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-background via-background/40 via-40% to-transparent pointer-events-none" />
+      <BackgroundCarousel />
 
       <div className="relative z-10 container mx-auto px-4">
         <div className="max-w-xl space-y-6">
