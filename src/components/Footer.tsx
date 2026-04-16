@@ -11,7 +11,7 @@ const Footer = () => {
           <span className="font-semibold text-foreground">SkillSwap</span>
         </div>
         <p className="text-sm text-muted-foreground">
-          © 2026 SkillSwap by Ngozi Akindelete. All rights reserved.
+          © 2026 SkillSwap by Ngozi Akindiilete. All rights reserved.
         </p>
       </div>
     </footer>
