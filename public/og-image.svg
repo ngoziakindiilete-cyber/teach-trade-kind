@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#F7F4EF"/>
+
+  <!-- Left green accent bar -->
+  <rect x="0" y="0" width="8" height="630" fill="#2A9D78"/>
+
+  <!-- Decorative green blob top-right -->
+  <ellipse cx="1100" cy="80" rx="220" ry="180" fill="#2A9D78" opacity="0.08"/>
+  <ellipse cx="1160" cy="560" rx="160" ry="130" fill="#2A9D78" opacity="0.06"/>
+
+  <!-- Decorative dots grid top-left -->
+  <g fill="#2A9D78" opacity="0.12">
+    <circle cx="60" cy="60" r="4"/><circle cx="90" cy="60" r="4"/><circle cx="120" cy="60" r="4"/>
+    <circle cx="60" cy="90" r="4"/><circle cx="90" cy="90" r="4"/><circle cx="120" cy="90" r="4"/>
+    <circle cx="60" cy="120" r="4"/><circle cx="90" cy="120" r="4"/><circle cx="120" cy="120" r="4"/>
+  </g>
+
+  <!-- Logo icon background pill -->
+  <rect x="80" y="220" width="72" height="72" rx="18" fill="#2A9D78"/>
+  <!-- Swap arrows icon -->
+  <path d="M96 248 L136 248 M126 240 L136 248 L126 256" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M144 268 L104 268 M114 260 L104 268 L114 276" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Brand name -->
+  <text x="170" y="271" font-family="'Segoe UI', Arial, sans-serif" font-weight="800" font-size="52" fill="#1A1A1A" letter-spacing="-1">SkillSwap</text>
+
+  <!-- Tagline -->
+  <text x="80" y="360" font-family="'Segoe UI', Arial, sans-serif" font-weight="800" font-size="68" fill="#1A1A1A" letter-spacing="-2">Swap skills,</text>
+  <text x="80" y="445" font-family="'Segoe UI', Arial, sans-serif" font-weight="800" font-size="68" fill="#2A9D78" letter-spacing="-2">grow together.</text>
+
+  <!-- Description -->
+  <text x="80" y="510" font-family="'Segoe UI', Arial, sans-serif" font-size="28" fill="#6B6B6B">Teach what you know. Learn what you love.</text>
+  <text x="80" y="548" font-family="'Segoe UI', Arial, sans-serif" font-size="28" fill="#6B6B6B">Exchange skills — no money needed.</text>
+
+  <!-- Right side skill badges -->
+  <!-- Badge 1 -->
+  <rect x="780" y="200" width="280" height="60" rx="30" fill="#2A9D78" opacity="0.12"/>
+  <text x="870" y="238" font-family="'Segoe UI', Arial, sans-serif" font-size="26" fill="#2A9D78" font-weight="600">✂️ Tailoring</text>
+
+  <!-- Badge 2 -->
+  <rect x="820" y="280" width="280" height="60" rx="30" fill="#2A9D78" opacity="0.12"/>
+  <text x="910" y="318" font-family="'Segoe UI', Arial, sans-serif" font-size="26" fill="#2A9D78" font-weight="600">🍳 Cooking</text>
+
+  <!-- Badge 3 -->
+  <rect x="760" y="360" width="300" height="60" rx="30" fill="#2A9D78" opacity="0.12"/>
+  <text x="830" y="398" font-family="'Segoe UI', Arial, sans-serif" font-size="26" fill="#2A9D78" font-weight="600">💻 Coding</text>
+
+  <!-- Badge 4 -->
+  <rect x="820" y="440" width="300" height="60" rx="30" fill="#2A9D78" opacity="0.12"/>
+  <text x="870" y="478" font-family="'Segoe UI', Arial, sans-serif" font-size="26" fill="#2A9D78" font-weight="600">🎨 Design</text>
+
+  <!-- Badge 5 -->
+  <rect x="760" y="520" width="300" height="60" rx="30" fill="#2A9D78" opacity="0.12"/>
+  <text x="810" y="558" font-family="'Segoe UI', Arial, sans-serif" font-size="26" fill="#2A9D78" font-weight="600">🎵 Music</text>
+
+  <!-- skillswap.com label bottom right -->
+  <text x="1120" y="610" font-family="'Segoe UI', Arial, sans-serif" font-size="22" fill="#AAAAAA" text-anchor="end">skillswap.com</text>
+</svg>
