@@ -1,9 +1,9 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { AuthProvider } from "@/contexts/AuthContext";
+import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import Index from "./pages/Index.tsx";
 import Login from "./pages/Login.tsx";
 import Signup from "./pages/Signup.tsx";
@@ -13,6 +13,13 @@ import BrowseSkills from "./pages/BrowseSkills.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
+
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  const { user, loading } = useAuth();
+  if (loading) return null;
+  if (!user) return <Navigate to="/signup" replace />;
+  return <>{children}</>;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -25,8 +32,8 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/my-skills" element={<MySkills />} />
+            <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+            <Route path="/my-skills" element={<ProtectedRoute><MySkills /></ProtectedRoute>} />
             <Route path="/browse" element={<BrowseSkills />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
