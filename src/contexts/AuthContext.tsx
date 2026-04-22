@@ -95,14 +95,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const signInWithGoogle = async () => {
-    try {
-      const { lovable } = await import("@/integrations/lovable");
-      const result = await lovable.auth.signInWithOAuth("google");
-      if (result.error) return { error: result.error.message || "Google sign-in failed" };
-      return { error: null };
-    } catch {
-      return { error: "Google sign-in failed" };
-    }
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${window.location.origin}/`,
+      },
+    });
+    return { error: error?.message ?? null };
   };
 
   const logout = async () => {
