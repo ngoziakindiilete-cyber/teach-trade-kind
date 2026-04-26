@@ -1,4 +1,12 @@
 {
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "teach-trade-kind-main.vercel.app" }],
+      "destination": "https://skillswap-ng.vercel.app/$1",
+      "permanent": true
+    }
+  ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
