@@ -75,7 +75,7 @@ const Signup = () => {
     const { error } = await signInWithGoogle();
     setIsLoading(false);
     if (!error) {
-      navigate("/profile");
+      navigate("/");
     } else {
       toast({ title: "Google sign-in failed", description: error, variant: "destructive" });
     }
