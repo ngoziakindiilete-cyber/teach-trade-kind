@@ -34,7 +34,9 @@ const Login = () => {
     setIsLoading(true);
     const { error } = await signInWithGoogle();
     setIsLoading(false);
-    if (error) {
+    if (!error) {
+      navigate("/profile");
+    } else {
       toast({ title: "Google sign-in failed", description: error, variant: "destructive" });
     }
   };
