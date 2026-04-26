@@ -14,9 +14,19 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useAuth } from "@/contexts/AuthContext";
-import { supabase } from "@/integrations/supabase/client";
+import { db, storage } from "@/lib/firebase";
+import {
+  doc,
+  getDoc,
+  updateDoc,
+  collection,
+  getDocs,
+  addDoc,
+  deleteDoc,
+} from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useToast } from "@/hooks/use-toast";
-import { Repeat, Plus, X, Upload, Camera, ArrowLeft } from "lucide-react";
+import { Plus, X, Upload, Camera, ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 
 const NIGERIAN_STATES = [
@@ -90,12 +100,12 @@ const Profile = () => {
 
   const loadSkills = async () => {
     if (!user) return;
-    const [teach, learn] = await Promise.all([
-      supabase.from("user_skills_teach").select("*").eq("user_id", user.id),
-      supabase.from("user_skills_learn").select("*").eq("user_id", user.id),
+    const [teachSnap, learnSnap] = await Promise.all([
+      getDocs(collection(db, "users", user.uid, "skills_teach")),
+      getDocs(collection(db, "users", user.uid, "skills_learn")),
     ]);
-    if (teach.data) setTeachSkills(teach.data);
-    if (learn.data) setLearnSkills(learn.data);
+    setTeachSkills(teachSnap.docs.map((d) => ({ id: d.id, ...d.data() }) as SkillTeach));
+    setLearnSkills(learnSnap.docs.map((d) => ({ id: d.id, ...d.data() }) as SkillLearn));
   };
 
   const completeness = (() => {
@@ -115,18 +125,19 @@ const Profile = () => {
 
     setUploading(true);
     const fileExt = file.name.split(".").pop();
-    const filePath = `${user.id}/${Date.now()}.${fileExt}`;
+    const filePath = `avatars/${user.uid}/${Date.now()}.${fileExt}`;
 
-    const { error: uploadError } = await supabase.storage.from("avatars").upload(filePath, file, { upsert: true });
-    if (uploadError) {
-      toast({ title: "Upload failed", description: uploadError.message, variant: "destructive" });
+    try {
+      const storageRef = ref(storage, filePath);
+      await uploadBytes(storageRef, file);
+      const publicUrl = await getDownloadURL(storageRef);
+      setAvatarUrl(publicUrl);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Upload failed";
+      toast({ title: "Upload failed", description: message, variant: "destructive" });
+    } finally {
       setUploading(false);
-      return;
     }
-
-    const { data: { publicUrl } } = supabase.storage.from("avatars").getPublicUrl(filePath);
-    setAvatarUrl(publicUrl);
-    setUploading(false);
   };
 
   const handleSaveProfile = async () => {
@@ -135,62 +146,56 @@ const Profile = () => {
 
     const isComplete = !!(fullName && bio && location && avatarUrl && teachSkills.length > 0 && learnSkills.length > 0);
 
-    const { error } = await supabase
-      .from("profiles")
-      .update({
+    try {
+      await updateDoc(doc(db, "users", user.uid), {
         full_name: fullName,
         bio,
         location,
         phone,
         avatar_url: avatarUrl,
         profile_complete: isComplete,
-      })
-      .eq("user_id", user.id);
-
-    setSaving(false);
-    if (error) {
-      toast({ title: "Error saving profile", description: error.message, variant: "destructive" });
-    } else {
+      });
       await refreshProfile();
       toast({ title: "Profile updated!", description: "Your changes have been saved." });
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Save failed";
+      toast({ title: "Error saving profile", description: message, variant: "destructive" });
+    } finally {
+      setSaving(false);
     }
   };
 
   const addTeachSkill = async () => {
     if (!newTeach.skill_name || !user) return;
-    const { error } = await supabase.from("user_skills_teach").insert({
-      user_id: user.id,
+    await addDoc(collection(db, "users", user.uid, "skills_teach"), {
       skill_name: newTeach.skill_name,
       category: newTeach.category,
       proficiency: newTeach.proficiency,
     });
-    if (!error) {
-      setNewTeach({ skill_name: "", category: "Other", proficiency: "Beginner" });
-      loadSkills();
-    }
+    setNewTeach({ skill_name: "", category: "Other", proficiency: "Beginner" });
+    loadSkills();
   };
 
   const addLearnSkill = async () => {
     if (!newLearn.skill_name || !user) return;
-    const { error } = await supabase.from("user_skills_learn").insert({
-      user_id: user.id,
+    await addDoc(collection(db, "users", user.uid, "skills_learn"), {
       skill_name: newLearn.skill_name,
       category: newLearn.category,
       preferred_format: newLearn.preferred_format,
     });
-    if (!error) {
-      setNewLearn({ skill_name: "", category: "Other", preferred_format: "Both" });
-      loadSkills();
-    }
+    setNewLearn({ skill_name: "", category: "Other", preferred_format: "Both" });
+    loadSkills();
   };
 
   const removeTeachSkill = async (id: string) => {
-    await supabase.from("user_skills_teach").delete().eq("id", id);
+    if (!user) return;
+    await deleteDoc(doc(db, "users", user.uid, "skills_teach", id));
     loadSkills();
   };
 
   const removeLearnSkill = async (id: string) => {
-    await supabase.from("user_skills_learn").delete().eq("id", id);
+    if (!user) return;
+    await deleteDoc(doc(db, "users", user.uid, "skills_learn", id));
     loadSkills();
   };
 

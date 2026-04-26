@@ -17,7 +17,7 @@ SkillSwap connects people who want to trade expertise. Whether you're a guitaris
 
 - **Frontend:** React, TypeScript, Vite
 - **Styling:** Tailwind CSS, shadcn/ui
-- **Backend & Auth:** Supabase
+- **Backend & Auth:** Firebase (Auth, Firestore, Storage)
 - **Testing:** Vitest, Playwright
 
 ## Getting Started
