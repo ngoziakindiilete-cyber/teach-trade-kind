@@ -15,7 +15,7 @@ const SLIDES = [
   "/female-chef-bro.svg",
 ];
 
-const INTERVAL = 5000; // 5 seconds
+const INTERVAL = 1000; // 1 second
 
 
 
@@ -429,7 +429,7 @@ const Hero = () => {
               key={src}
               src={src}
               alt=""
-              className="absolute inset-0 w-full h-full object-contain object-right transition-opacity duration-500"
+              className="absolute inset-0 w-full h-full object-contain object-right transition-opacity duration-200"
               style={{ opacity: i === current ? (fading ? 0 : 1) : 0, pointerEvents: "none" }}
             />
           ))}
@@ -481,7 +481,7 @@ const Hero = () => {
                 key={src}
                 src={src}
                 alt=""
-                className="absolute inset-0 w-full h-full object-contain transition-opacity duration-500"
+                className="absolute inset-0 w-full h-full object-contain transition-opacity duration-200"
                 style={{ opacity: i === current ? (fading ? 0 : 1) : 0 }}
               />
             ))}
